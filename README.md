@@ -1,8 +1,9 @@
 # MyCovidTracker
 
 * API : https://corona.lmao.ninja/
-* Fetching Data using Volley Libarary
+* Fetching Data using Volley Library
 * Json Parsing
+* 3rd Library : Glide
 
 
 
