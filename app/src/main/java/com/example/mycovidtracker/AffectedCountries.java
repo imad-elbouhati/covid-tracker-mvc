@@ -17,7 +17,7 @@ import android.widget.ListView;
 import com.example.mycovidtracker.Adapter.MyCostumAdapter;
 import com.example.mycovidtracker.data.AnswerListAsyncResponse;
 import com.example.mycovidtracker.data.CountriesBank;
-import com.example.mycovidtracker.data.CountryListAsyncResponse;
+
 import com.example.mycovidtracker.model.Countries;
 import com.example.mycovidtracker.model.WorldStatistics;
 
@@ -43,14 +43,12 @@ public class AffectedCountries extends AppCompatActivity {
 
 
         countriesList = new ArrayList<>();
-        countriesList =new CountriesBank().getCountries(new CountryListAsyncResponse() {
+        countriesList =new CountriesBank().getCountries(new AnswerListAsyncResponse() {
             @Override
-            public void processFinished(List<Countries> countriesArrayList) {
-                Log.d("Affe", "processFinished: "+countriesArrayList);
+            public void processFinished(List worldStatisticsArrayList) {
 
-                myAdapter = new MyCostumAdapter(getApplicationContext(),countriesArrayList);
+                myAdapter = new MyCostumAdapter(getApplicationContext(),worldStatisticsArrayList);
                 listView.setAdapter(myAdapter);
-
             }
         });
 

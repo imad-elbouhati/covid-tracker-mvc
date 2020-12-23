@@ -20,9 +20,8 @@ public class CountriesBank {
     private List<Countries> countriesList = new ArrayList<>();
     String url  = "https://corona.lmao.ninja/v2/countries/";
 
-
     private  Countries countries;
-    public List<Countries> getCountries(final CountryListAsyncResponse callback){
+    public List<Countries> getCountries(final AnswerListAsyncResponse callback){
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
@@ -47,11 +46,8 @@ public class CountriesBank {
 
                                  JSONObject object = jsonObject.getJSONObject("countryInfo");
                                  countries.setFlag(object.getString("flag"));
-
-
                                 countriesList.add(countries);
                             }
-
 
                         } catch (JSONException e) {
                             e.printStackTrace();

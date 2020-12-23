@@ -81,13 +81,9 @@ public class MyCostumAdapter extends ArrayAdapter<Countries> {
                         filterResults.count = resultsModel.size();
                         filterResults.values = resultsModel;
                     }
-
-
                 }
-
                 return filterResults;
             }
-
             @Override
             protected void publishResults(CharSequence constraint, FilterResults results) {
 

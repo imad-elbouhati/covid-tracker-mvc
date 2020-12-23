@@ -6,8 +6,6 @@ import com.example.mycovidtracker.model.WorldStatistics;
 import java.util.ArrayList;
 import java.util.List;
 
-public interface AnswerListAsyncResponse {
-
-    void processFinished(List<WorldStatistics> worldStatisticsArrayList);
-
+public interface AnswerListAsyncResponse<T> {
+    void processFinished(List<T> worldStatisticsArrayList);
 }

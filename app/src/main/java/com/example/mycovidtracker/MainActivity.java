@@ -46,26 +46,28 @@ public class MainActivity extends AppCompatActivity {
          button = findViewById(R.id.trackCountries);
 
 
-        new WorldWide().getWorldStatistics(new AnswerListAsyncResponse() {
-              @Override
-              public void processFinished(List<WorldStatistics> worldStatisticsArrayList) {
+        new WorldWide().getWorldStatistics(new AnswerListAsyncResponse<WorldStatistics>() {
+            @Override
+            public void processFinished(List<WorldStatistics> worldStatisticsArrayList) {
+                cases.setText(Integer.toString(worldStatisticsArrayList.get(0).getCases()));
 
-                  cases.setText(Integer.toString(worldStatisticsArrayList.get(0).getCases()));
+                deaths.setText(Integer.toString(worldStatisticsArrayList.get(0).getDeaths()));
 
-                  deaths.setText(Integer.toString(worldStatisticsArrayList.get(0).getDeaths()));
+                recovered.setText(Integer.toString(worldStatisticsArrayList.get(0).getRecovered()));
 
-                  recovered.setText(Integer.toString(worldStatisticsArrayList.get(0).getRecovered()));
-
-                  active.setText(Integer.toString(worldStatisticsArrayList.get(0).getActive()));
+                active.setText(Integer.toString(worldStatisticsArrayList.get(0).getActive()));
 
 
-                  mPieChart.addPieSlice(new PieModel("Cases", worldStatisticsArrayList.get(0).getCases(), Color.parseColor("#F9A825")));
-                  mPieChart.addPieSlice(new PieModel("Recovered", worldStatisticsArrayList.get(0).getRecovered(), Color.parseColor("#26C6DA")));
-                  mPieChart.addPieSlice(new PieModel("Death", worldStatisticsArrayList.get(0).getDeaths(), Color.parseColor("#E57373")));
-                  mPieChart.addPieSlice(new PieModel("Active", worldStatisticsArrayList.get(0).getActive(), Color.parseColor("#81C784")));
+                mPieChart.addPieSlice(new PieModel("Cases", worldStatisticsArrayList.get(0).getCases(), Color.parseColor("#F9A825")));
+                mPieChart.addPieSlice(new PieModel("Recovered", worldStatisticsArrayList.get(0).getRecovered(), Color.parseColor("#26C6DA")));
+                mPieChart.addPieSlice(new PieModel("Death", worldStatisticsArrayList.get(0).getDeaths(), Color.parseColor("#E57373")));
+                mPieChart.addPieSlice(new PieModel("Active", worldStatisticsArrayList.get(0).getActive(), Color.parseColor("#81C784")));
 
-                  mPieChart.startAnimation();
-              }
+                mPieChart.startAnimation();
+            }
+
+
+
         });
 
         button.setOnClickListener(new View.OnClickListener() {
